@@ -1,0 +1,2 @@
+target/release/text-generation-launcher filter=lfs diff=lfs merge=lfs -text
+target/release/text-generation-router filter=lfs diff=lfs merge=lfs -text
