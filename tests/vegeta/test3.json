@@ -1,0 +1,9 @@
+{
+  "inputs": "public class FactorialExample  \n{    \nstatic int factorial(int n)  \n{      \nif (n == 0)      \nreturn 1;      ",
+  "parameters": {
+    "stop": [
+      "</s>"
+    ],
+    "max_new_tokens": 128
+  }
+}

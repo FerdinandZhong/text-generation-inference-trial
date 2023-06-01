@@ -1,0 +1,9 @@
+{
+  "inputs": "def test():",
+  "parameters": {
+    "stop": [
+      "</s>"
+    ],
+    "max_new_tokens": 128
+  }
+}

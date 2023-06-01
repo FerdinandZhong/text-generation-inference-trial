@@ -1,0 +1,9 @@
+Requests      [total, rate, throughput]  60, 1.02, 0.10
+Duration      [total, attack, wait]      1m29.001030568s, 58.999970499s, 30.001060069s
+Latencies     [mean, 50, 95, 99, max]    27.507858959s, 30.000467023s, 30.001127823s, 30.001144285s, 30.0011449s
+Bytes In      [total, mean]              1914, 31.90
+Bytes Out     [total, mean]              1338, 22.30
+Success       [ratio]                    15.00%
+Status Codes  [code:count]               0:51  200:9  
+Error Set:
+Post "http://172.17.0.2:8081": context deadline exceeded (Client.Timeout exceeded while awaiting headers)

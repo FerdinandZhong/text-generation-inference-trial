@@ -1,0 +1,9 @@
+{
+  "inputs": "install-server:\ncd server && make install\n\ninstall-integration-tests:\ncd integration-tests && pip install -r requirements.txt",
+  "parameters": {
+    "stop": [
+      "</s>"
+    ],
+    "max_new_tokens": 128
+  }
+}

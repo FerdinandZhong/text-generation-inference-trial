@@ -1,0 +1,10 @@
+Requests      [total, rate, throughput]  300, 5.02, 2.05
+Duration      [total, attack, wait]      1m29.801399599s, 59.800497841s, 30.000901758s
+Latencies     [mean, 50, 95, 99, max]    11.742769843s, 1.738317364s, 30.000992207s, 30.001107081s, 30.010693475s
+Bytes In      [total, mean]              65827, 219.42
+Bytes Out     [total, mean]              48077, 160.26
+Success       [ratio]                    61.33%
+Status Codes  [code:count]               0:95  200:184  424:21  
+Error Set:
+424 Failed Dependency
+Post "http://127.0.0.1:8080/generate": context deadline exceeded (Client.Timeout exceeded while awaiting headers)

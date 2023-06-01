@@ -1,0 +1,11 @@
+POST http://127.0.0.1:8080/generate
+Content-Type: application/json
+@/root/text-generation-inference-trial/tests/vegeta/test1.json
+
+POST http://127.0.0.1:8080/generate
+Content-Type: application/json
+@/root/text-generation-inference-trial/tests/vegeta/test2.json
+
+POST http://127.0.0.1:8080/generate
+Content-Type: application/json
+@/root/text-generation-inference-trial/tests/vegeta/test3.json

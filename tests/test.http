@@ -1,0 +1,134 @@
+###
+POST http://127.0.0.1:8080/generate
+Content-Type: application/json
+
+{
+  "inputs": "一个传奇的开端，一个不灭的神话，这不仅仅是一部电影，而是作为一个走进新时代的标签，永远彪炳史册。do you think this sentence is positive or negative?",
+  "parameters": {
+    "best_of": 1,
+    "details": false,
+    "do_sample": true,
+    "return_full_text": false,
+    "temperature": 0.8,
+    "top_k": 10,
+    "top_p": 0.95,
+    "truncate": null,
+    "typical_p": 0.95,
+    "watermark": true,
+    "max_new_tokens": 256,
+    "stop": [
+      "</s>"
+    ]
+  }
+}
+
+###
+POST http://127.0.0.1:8080/generate
+Content-Type: application/json
+
+{
+  "inputs": "一个传奇的开端，一个不灭的神话，这不仅仅是一部电影，而是作为一个走进新时代的标签，永远彪炳史册。你认为这句话的立场是赞扬、中立还是批评?",
+  "parameters": {
+    "stop": [
+      "</s>"
+    ],
+    "max_new_tokens": 256
+  }
+}
+
+###
+POST http://127.0.0.1:8080/generate
+Content-Type: application/json
+
+{
+  "inputs": "Suggest at least five related search terms to \"Mạng neural nhân tạo\".",
+  "parameters": {
+    "stop": [
+      "</s>"
+    ],
+    "max_new_tokens": 256
+  }
+}
+
+###
+POST http://172.17.0.2:8080
+Content-Type: application/json
+
+{
+  "inputs": "Explain in a sentence in Telugu what is backpropagation in neural networks.",
+  "parameters": {
+    "stop": [
+      "</s>"
+    ],
+    "max_new_tokens": 128
+  }
+}
+
+###
+POST http://172.17.0.2:8080
+Content-Type: application/json
+
+{
+  "inputs": "Write a fairy tale about a troll saving a princess from a dangerous dragon. The fairy tale is a masterpiece that has achieved praise worldwide and its moral is \"Heroes Come in All Shapes and Sizes\". Story (in English)",
+  "parameters": {
+    "stop": [
+      "</s>"
+    ],
+    "max_new_tokens": 128
+  }
+}
+
+###
+POST http://127.0.0.1:8080/generate
+Content-Type: application/json
+
+{
+  "inputs": "def test():",
+  "parameters": {
+    "stop": [
+      "</s>"
+    ],
+    "max_new_tokens": 256
+  }
+}
+
+
+###
+POST http://127.0.0.1:8080/generate
+Content-Type: application/json
+
+{
+  "inputs": "install-server:\ncd server && make install\n\ninstall-integration-tests:\ncd integration-tests && pip install -r requirements.txt",
+  "parameters": {
+    "max_new_tokens": 128
+  }
+}
+
+###
+POST http://127.0.0.1:8080/generate
+Content-Type: application/json
+
+{
+  "inputs": "public class FactorialExample  \n{    \nstatic int factorial(int n)  \n{      \nif (n == 0)      \nreturn 1;      ",
+  "parameters": {
+    "stop": [
+      "</s>"
+    ]
+  }
+}
+
+###
+POST http://172.17.0.2:8081
+Content-Type: application/json
+
+{
+  "inputs": "public class FactorialExample "
+}
+
+###
+POST http://172.17.0.2:8081
+Content-Type: application/json
+
+{
+  "inputs": "def test(): "
+}

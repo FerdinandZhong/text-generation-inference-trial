@@ -1,0 +1,15 @@
+import_path: ray_deployment:deployment
+
+runtime_env: {}
+
+host: 172.17.0.2
+
+port: 8081
+
+deployments:
+- name: PredictDeployment
+  num_replicas: 1
+  ray_actor_options:
+    num_gpus: 1
+  user_config:
+    model_path: /root/model_assets/codegen2-1B
