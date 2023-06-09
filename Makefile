@@ -1,54 +1,30 @@
-install-server:
-	cd server && make install
+PY_SOURCE_FILES=*.py #this can be modified to include more files
 
-install-integration-tests:
-	cd integration-tests && pip install -r requirements.txt
+install: 
+	pip install "pytest>=6"
+	pip install "flake8>=3.8"
+	pip install "black>=20.8b1"
+	pip install "isort>=5.6"
+	pip install "autoflake>=1.4"
 
-install-router:
-	cd router && cargo install --path .
+test:
+	pytest tests -vv -s
 
-install-launcher:
-	cd launcher && cargo install --path .
+clean:
+	rm -rf build/ dist/ *.egg-info .pytest_cache
+	find . -name '*.pyc' -type f -exec rm -rf {} +
+	find . -name '__pycache__' -exec rm -rf {} +
 
-install-benchmark:
-	cd benchmark && cargo install --path .
+package: clean
+	python setup.py sdist bdist_wheel
 
-install: install-server install-router install-launcher
+format:
+	autoflake --in-place --remove-all-unused-imports --recursive ${PY_SOURCE_FILES}
+	isort ${PY_SOURCE_FILES}
+	black ${PY_SOURCE_FILES}
 
-server-dev:
-	cd server && make run-dev
+lint:
+	isort --check --diff ${PY_SOURCE_FILES}
+	black --check --diff ${PY_SOURCE_FILES}
+	flake8 ${PY_SOURCE_FILES} --count --show-source --statistics --max-line-length 120
 
-router-dev:
-	cd router && cargo run -- --port 8080
-
-rust-tests: install-router install-launcher
-	cargo test
-
-integration-tests: install-integration-tests
-	pytest -s -vv -m "not private" integration-tests
-
-update-integration-tests: install-integration-tests
-	pytest -s -vv --snapshot-update integration-tests
-
-python-server-tests:
-	HF_HUB_ENABLE_HF_TRANSFER=1 pytest -s -vv -m "not private" server/tests
-
-python-client-tests:
-	pytest clients/python/tests
-
-python-tests: python-server-tests python-client-tests
-
-run-bloom-560m:
-	text-generation-launcher --model-id bigscience/bloom-560m --num-shard 2 --port 8080
-
-run-bloom-560m-quantize:
-	text-generation-launcher --model-id bigscience/bloom-560m --num-shard 2 --quantize --port 8080
-
-download-bloom:
-	HF_HUB_ENABLE_HF_TRANSFER=1 text-generation-server download-weights bigscience/bloom
-
-run-bloom:
-	text-generation-launcher --model-id bigscience/bloom --num-shard 8 --port 8080
-
-run-bloom-quantize:
-	text-generation-launcher --model-id bigscience/bloom --num-shard 8 --quantize --port 8080
