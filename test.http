@@ -1,12 +1,12 @@
 ###
-POST http://127.0.0.1:8080/generate
+POST http://127.0.0.1:5000/generate
 Content-Type: application/json
 
 {
   "inputs": "一个传奇的开端，一个不灭的神话，这不仅仅是一部电影，而是作为一个走进新时代的标签，永远彪炳史册。do you think this sentence is positive or negative?",
   "parameters": {
     "best_of": 1,
-    "details": false,
+    "details": true,
     "do_sample": true,
     "return_full_text": false,
     "temperature": 0.8,
@@ -37,7 +37,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://127.0.0.1:8080/generate
+POST http://127.0.0.1:16002/generate
 Content-Type: application/json
 
 {
@@ -65,7 +65,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://172.17.0.2:8080
+POST http://127.0.0.1:16002/generate
 Content-Type: application/json
 
 {
@@ -74,7 +74,7 @@ Content-Type: application/json
     "stop": [
       "</s>"
     ],
-    "max_new_tokens": 128
+    "max_new_tokens": 256
   }
 }
 
@@ -131,4 +131,36 @@ Content-Type: application/json
 
 {
   "inputs": "def test(): "
+}
+
+###
+POST http://127.0.0.1:16002/generate
+Content-Type: application/json
+
+{
+  "inputs": "Label the tweets as either 'positive', 'negative', 'mixed', or 'neutral': \nTweet: I can say that there isn't anything I would change.\nLabel: positive\n\nTweet: I'm not sure about this.\nLabel: neutral\n\nTweet: I liked some parts but I didn't like other parts.\nLabel: mixed\nTweet: I really like it.\nLabel:"
+}
+
+### 
+POST http://127.0.0.1:16002/generate HTTP/1.1
+Content-Type: application/json
+
+{
+  "inputs": "You are a robot to answer user's question. User: Tell what the machine learning is?",
+  "parameters": {
+    "best_of": 1,
+    "details": true,
+    "do_sample": true,
+    "return_full_text": false,
+    "temperature": 0.7,
+    "top_k": 10,
+    "top_p": 0.95,
+    "truncate": null,
+    "typical_p": 0.95,
+    "watermark": true,
+    "max_new_tokens": 256,
+    "stop": [
+      "</s>"
+    ]
+  }
 }

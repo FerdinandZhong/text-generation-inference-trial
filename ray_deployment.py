@@ -3,7 +3,6 @@ from typing import Dict, List
 import torch
 from ray import serve
 from starlette.requests import Request
-from text_generation_server.models.bloom import BLOOMSharded
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
@@ -11,7 +10,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 class PredictDeployment:
     def __init__(self):
         self.device = "cuda"
-    
+
     def reconfigure(self, config):
         # self.bloom = BLOOMSharded(config["model_path"])
         self.model = AutoModelForCausalLM.from_pretrained(
@@ -23,10 +22,9 @@ class PredictDeployment:
             config["model_path"],
             padding_side="left",
             truncation_side="left",
-            use_fast=True
+            use_fast=True,
         )
         self.tokenizer.pad_token = self.tokenizer.bos_token
-
 
     @serve.batch(max_batch_size=10, batch_wait_timeout_s=0.5)
     async def batch_generate(
