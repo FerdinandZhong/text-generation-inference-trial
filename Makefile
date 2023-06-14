@@ -1,4 +1,4 @@
-PY_SOURCE_FILES=*.py #this can be modified to include more files
+PY_SOURCE_FILES=scripts ray_scripts #this can be modified to include more files
 
 install: 
 	pip install "pytest>=6"

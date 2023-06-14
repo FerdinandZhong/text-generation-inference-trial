@@ -1,5 +1,6 @@
 import argparse
 
+
 def update_nginx_conf(conda_env):
     cfg = """
 # nginx Configuration File
@@ -143,6 +144,7 @@ http {
     with open(nginx_config_path, "w") as fh:
         fh.writelines(cfg)
 
+
 def update_defaultsite_conf(conda_env):
     cfg = """
 upstream dashboard_servers {
@@ -183,11 +185,12 @@ server {
     with open(nginx_config_path, "w") as fh:
         fh.writelines(cfg)
 
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
 
     ap.add_argument("--conda_env", default="server-env")
-    
+
     conda_env = ap.parse_args().conda_env
 
     update_defaultsite_conf(conda_env=conda_env)
